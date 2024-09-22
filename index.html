@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="disable_right_click.js"></script>
 <title>Certification of Registration</title>
 </head>
 <body style="font-family: Arial, sans-serif;">
@@ -136,8 +135,32 @@
 
 
 <script>
-    document.addEventListener('contextmenu', (event) => {
-    event.preventDefault();
-});
-</script>
+    // Disable Right-Click (Context Menu)
+    document.addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+  
+    // Disable common View Source shortcuts
+    document.addEventListener('keydown', function(e) {
+      // Disable F12 (Developer Tools)
+      if (e.key === "F12") {
+        e.preventDefault();
+      }
+  
+      // Disable Ctrl+Shift+I (Developer Tools)
+      if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+        e.preventDefault();
+      }
+  
+      // Disable Ctrl+U (View Source)
+      if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault();
+      }
+  
+      // Disable Ctrl+Shift+C or Ctrl+Shift+J (Inspect Element)
+      if ((e.ctrlKey && e.shiftKey && e.key === 'C') || (e.ctrlKey && e.shiftKey && e.key === 'J')) {
+        e.preventDefault();
+      }
+    });
+  </script>
 </html>
